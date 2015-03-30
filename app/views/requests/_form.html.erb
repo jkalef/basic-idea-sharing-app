@@ -1,0 +1,30 @@
+<%# this form will check and display any errors when filling out the form%>
+<% if @request.errors.any? %>
+	<% @request.errors.full_messages.each do |message|%>
+		<%= message %>
+	<% end %>
+<% end %>
+
+
+<%#form to create a new request %>
+<%= form_for @request do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<br>
+	<%= f.label :department %>
+	<%= f.radio_button(:department, "sales") %>
+	<%= f.label(:department, "Sales") %>
+	<%= f.radio_button(:department, "marketing") %>
+	<%= f.label(:department, "Marketing") %>
+	<%= f.radio_button(:department, "technical") %>
+	<%= f.label(:department, "Technical") %>
+	<br>
+	<%= f.label :message %>
+	<%= f.text_area :message %>
+	<br>
+	<%= f.submit %>
+
+<% end %>

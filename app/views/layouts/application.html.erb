@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Supporter</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<%# --------HEADER LINKS ----------------------------%>
+	<%# links to main pages on the site %>
+	<%= link_to "All Requests", requests_path %> |  
+	<%= link_to "Create New Request", new_request_path %>
+	<br>
+	<br>
+	<hr>
+
+	<%# -------FLASH MESSAGES ----------------------------- %>
+	<%# space to display the flash messages %>
+	<%= flash[:notice] || flash[:alert] %>
+	<br>
+	<hr>
+
+	<%# --- SEARCH BAR -------------------------------------%>
+	<%# search for a specific record %>
+	<%= form_tag("/search", method: "get") do %>
+  		<%= label_tag(:input, "Search for:") %>
+  		<%= text_field_tag(:input) %>
+  		<%= submit_tag("Search") %>
+	<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>
+

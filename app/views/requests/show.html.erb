@@ -1,0 +1,43 @@
+<h1>View This Support Ticket</h1>
+
+<h2>Name:</h2>
+<%= @request.name %>
+<br>
+<br>
+<h2>Email</h2>
+<%= mail_to @request.email %>
+<br>
+<br>
+<h2>Department</h2>
+<%= @request.department %>
+<br>
+<br>
+<h2>Message</h2>
+<%= @request.message %>
+<br>
+<br>
+<h2>Status</h2>
+<%= @request.status %>
+<br>
+<br>
+
+<%#link to edit the ticket %>
+<%= link_to "Edit", edit_request_path(@request) %>
+<br>
+
+<%# link to delete the ticket %>
+<%# add a message pop-up to confirm if they want to delete it or not %>
+<%= button_to "Delete", request_path(@request), method: :delete, data: {confirm: "Are you sure you want to delete this support request?"} %>
+<br>
+
+<%# link to update the status to Complete %>
+<%= link_to "Mark As Complete", request_path(request:{status: "complete"}), method: :put %>  |
+<br>
+<%# link to update the status to incomplete %>
+<%= link_to "Mark As Incomplete", request_path(request:{status: "incomplete"}), method: :put %>
+
+
+
+
+
+
