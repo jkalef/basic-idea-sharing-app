@@ -18,7 +18,7 @@ class RequestsController < ApplicationController
 		
 		#pass the @page variable into pag method, and show the index
 		#page again
-		@requests = Request.status_sort.pag(@page, 5)
+		@requests = Request.pag(@page, 5)
 		render :index
 		#-----------------------------------------------------------
 	end

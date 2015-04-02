@@ -18,17 +18,14 @@
 		<td><%= r.message %></td>
 		<td>
 				<%# ---- BUTTON TO CHANGE STATUS OF PROJECTS --------- %>
-				<% if r.status == "Complete" %>
-					<%= form_for r do |f| %>
-						<%= f.hidden_field :status, value: "incomplete" %>
-						<%= f.submit "Mark Incomplete" %>
-						<% end %>
-				<% else %>
-					<%= form_for r do |f| %>
-						<%= f.hidden_field :status, value: "complete" %>
-						<%= f.submit "Mark Complete" %>
-						<% end %>
-				<% end %>
+
+				<% if r.status == "incomplete" %>
+          <%= link_to "Mark Complete", request_path(r, request: {status: "complete"}), method: :patch %>
+        <% else %>
+          <%= link_to "Mark Incomplete", request_path(r, request: {status: "incomplete"}), method: :patch %>
+        <% end %>
+
+
 				<%# ----------------------------------------------------- %>
 		<td>
 
